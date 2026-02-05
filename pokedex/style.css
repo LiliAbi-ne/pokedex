@@ -1,0 +1,210 @@
+/* === GENERAL === */
+:root {
+  --pokedex-red: #dc0a2d;
+  --pokedex-dark-red: #8b0000;
+  --screen-bg: #98cb98; /* Color Gameboy */
+  --screen-border: #505050;
+}
+
+body {
+  font-family: 'Courier New', Courier, monospace;
+  background-color: #333;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+/* === POKEDEX LAYOUT === */
+.pokedex-container {
+  display: flex;
+  background-color: var(--pokedex-red);
+  padding: 15px;
+  border-radius: 15px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+  gap: 15px;
+  max-width: 900px;
+  border: 4px solid var(--pokedex-dark-red);
+}
+
+.panel {
+  padding: 20px;
+  border-radius: 10px;
+  background: var(--pokedex-red);
+}
+
+.left-panel {
+  border-right: 4px solid var(--pokedex-dark-red);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* LUCES SUPERIORES */
+.top-lights {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  width: 100%;
+}
+.big-light { width: 50px; height: 50px; background: #3498db; border-radius: 50%; border: 4px solid white; box-shadow: 0 0 10px #3498db; }
+.small-light { width: 15px; height: 15px; border-radius: 50%; border: 1px solid black; }
+.red { background: #ff0000; } .yellow { background: #ffff00; } .green { background: #00ff00; }
+
+/* PANTALLA PRINCIPAL */
+.screen-container {
+  background-color: #dedede;
+  padding: 20px;
+  border-radius: 15px 15px 5px 5px;
+  border: 2px solid #555;
+  margin-bottom: 20px;
+}
+
+.main-screen {
+  background-color: #222;
+  width: 250px;
+  height: 200px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 4px solid #555;
+  color: white;
+  position: relative;
+}
+
+.screen-header {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  font-size: 12px;
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.sprite-area img {
+  width: 120px;
+  height: 120px;
+  image-rendering: pixelated;
+}
+
+/* TIPOS */
+.types-container {
+  display: flex;
+  gap: 5px;
+  margin-top: 5px;
+}
+.type-box img {
+  width: 40px;
+  border-radius: 3px;
+}
+
+/* CRUCETA (D-PAD) */
+.d-pad {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  margin-bottom: 15px;
+}
+.arrow {
+  position: absolute;
+  background: #222;
+  border: none;
+  color: #555;
+  cursor: pointer;
+  width: 33%;
+  height: 33%;
+}
+.arrow:active { background: #111; }
+.arrow-center { position: absolute; top: 33%; left: 33%; width: 34%; height: 34%; background: #222; }
+.arrow-top { top: 0; left: 33%; border-radius: 5px 5px 0 0; }
+.arrow-bottom { bottom: 0; left: 33%; border-radius: 0 0 5px 5px; }
+.arrow-left { top: 33%; left: 0; border-radius: 5px 0 0 5px; }
+.arrow-right { top: 33%; right: 0; border-radius: 0 5px 5px 0; }
+
+/* PANTALLA DERECHA (INFO) */
+.info-screen {
+  background-color: var(--screen-bg);
+  padding: 10px;
+  border-radius: 5px;
+  border: 2px solid var(--screen-border);
+  margin-bottom: 15px;
+  font-size: 14px;
+  color: #333;
+}
+.stat-row { display: flex; justify-content: space-between; border-bottom: 1px solid rgba(0,0,0,0.1); }
+
+/* TECLADO NUMÉRICO */
+.keypad-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 5px;
+  margin-bottom: 15px;
+}
+.keypad-grid button {
+  background: #2980b9;
+  border: 2px solid #1c5980;
+  color: white;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-weight: bold;
+}
+.keypad-grid button:active { background: #1c5980; box-shadow: inset 0 0 5px black; }
+
+/* BOTONES ACCION */
+.action-buttons { display: flex; gap: 10px; }
+.btn-search, .btn-add, .btn-random { padding: 10px; border: none; cursor: pointer; color: white; font-weight: bold; border-radius: 5px; flex: 1; }
+.btn-search { background: #f39c12; border-bottom: 4px solid #d35400; }
+.btn-add { background: #27ae60; border-bottom: 4px solid #1e8449; }
+.btn-random { background: #8e44ad; border-bottom: 4px solid #6c3483; width: 100%; margin-top: 5px; }
+.btn-battle { background: #c0392b; color: white; width: 100%; padding: 15px; font-size: 18px; border: 4px solid white; cursor: pointer; border-radius: 10px; animation: pulse 1s infinite; }
+
+@keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.02); } 100% { transform: scale(1); } }
+
+/* === TABLA EQUIPO === */
+.team-section { width: 100%; max-width: 900px; margin-top: 20px; background: white; padding: 20px; border-radius: 10px; }
+table { width: 100%; border-collapse: collapse; }
+th, td { padding: 10px; border-bottom: 1px solid #ddd; text-align: center; }
+th { background: #333; color: white; }
+
+/* === MODAL === */
+.modal { display: none; position: fixed; z-index: 100; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5); }
+.modal-content { background-color: #fefefe; margin: 15% auto; padding: 20px; border: 1px solid #888; width: 300px; border-radius: 10px; text-align: center; }
+.modal-actions { margin-top: 15px; display: flex; justify-content: space-around; }
+
+/* === ESTILOS DE BATALLA === */
+.hud {
+  position: absolute;
+  width: 250px;
+  background: rgba(255,255,255,0.9);
+  color: black; /* <--- ¡AGREGA ESTA LÍNEA! */
+  border: 2px solid #333;
+  padding: 10px;
+  border-radius: 10px 0 10px 0;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+}
+.enemy-hud { top: 20px; left: 20px; }
+.player-hud { bottom: 140px; right: 20px; }
+
+.hp-container { width: 100%; background: #ccc; height: 10px; border-radius: 5px; margin: 5px 0; border: 1px solid #555; overflow: hidden; }
+.hp-bar { height: 100%; background: #2ecc71; transition: width 0.5s ease-out; }
+.hp-yellow { background: #f1c40f !important; }
+.hp-red { background: #e74c3c !important; }
+
+.sprite-battle { position: absolute; width: 180px; height: 180px; image-rendering: pixelated; }
+.enemy { top: 60px; right: 60px; }
+.player { bottom: 120px; left: 60px; }
+.damage { animation: shake 0.5s; filter: brightness(0) invert(1); }
+
+@keyframes shake { 0% { transform: translate(1px, 1px) rotate(0deg); } 10% { transform: translate(-1px, -2px) rotate(-1deg); } 20% { transform: translate(-3px, 0px) rotate(1deg); } 30% { transform: translate(3px, 2px) rotate(0deg); } 40% { transform: translate(1px, -1px) rotate(1deg); } 50% { transform: translate(-1px, 2px) rotate(-1deg); } 60% { transform: translate(-3px, 1px) rotate(0deg); } 70% { transform: translate(3px, 1px) rotate(-1deg); } 80% { transform: translate(-1px, -1px) rotate(1deg); } 90% { transform: translate(1px, 2px) rotate(0deg); } 100% { transform: translate(1px, -2px) rotate(-1deg); } }
+
+.dialog-box { position: absolute; bottom: 0; width: 100%; height: 120px; background: #222; border-top: 4px solid #f39c12; padding: 10px; box-sizing: border-box; color: white; display: flex; justify-content: space-between; }
+.message { width: 50%; font-size: 18px; line-height: 1.4; padding: 10px; }
+.action-menu { width: 45%; background: white; border: 2px solid #555; border-radius: 5px; display: grid; grid-template-columns: 1fr 1fr; gap: 5px; padding: 5px; }
+.action-menu button { background: white; border: 1px solid #ccc; cursor: pointer; font-weight: bold; text-transform: uppercase; }
+.action-menu button:hover { background: #f39c12; color: white; }
+.hidden { display: none !important; }

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Batalla Pokémon</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Estilos específicos rápidos para la batalla */
+    body { background: #222; color: white; display: flex; justify-content: center; align-items: center; height: 100vh; }
+    .battle-scene { position: relative; width: 800px; height: 500px; background: url('https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/1.svg') no-repeat center; background-size: cover; background-color: #a8d6ad; border: 4px solid #fff; border-radius: 10px; overflow: hidden; }
+    /* Ajuste simple de fondo si no tienes imagen local */
+    .battle-scene { background: linear-gradient(to bottom, #87CEEB 60%, #90EE90 60%); }
+  </style>
+</head>
+<body>
+
+  <div class="battle-scene">
+    
+    <div class="hud enemy-hud">
+      <div class="info-box">
+        <h3 id="enemy-name">Rival</h3>
+        <div class="hp-container">
+          <div id="enemy-hp-bar" class="hp-bar" data-current="100" style="width: 100%;"></div>
+        </div>
+        <small id="enemy-hp-text">100/100</small>
+      </div>
+    </div>
+    <img id="enemy-sprite" class="sprite-battle enemy" src="" alt="Enemy">
+
+    <div class="hud player-hud">
+      <div class="info-box">
+        <h3 id="player-name">Jugador</h3>
+        <div class="hp-container">
+          <div id="player-hp-bar" class="hp-bar" data-current="100" style="width: 100%;"></div>
+        </div>
+        <small id="player-hp-text">100/100</small>
+      </div>
+    </div>
+    <img id="player-sprite" class="sprite-battle player" src="" alt="Player">
+
+    <div class="dialog-box">
+      <div id="dialog-text" class="message">¡Comienza la batalla!</div>
+      
+      
+      <div id="main-menu" class="action-menu hidden">
+        <button onclick="openFightMenu()">Luchar</button>
+        <button onclick="openBag()">Mochila</button>
+        <button onclick="cambiarPokemon()">Pokémon</button>
+        <button disabled>Huir</button> </div>
+
+      <div id="moves-menu" class="action-menu grid-menu hidden">
+        </div>
+
+      <div id="bag-menu" class="action-menu hidden">
+        <button onclick="usarPocion()">Poción (+20HP)</button>
+        <button onclick="usarHiperPocion()">Hiper Poción (Full)</button>
+        <button onclick="usarRevivir()">Revivir (50%)</button>
+        <button onclick="closeBag()">Atrás</button>
+      </div>
+
+      <div id="change-menu" class="action-menu hidden">
+        </div>
+    <div id="end-menu" class="action-menu hidden" style="grid-template-columns: 1fr;">
+        <button onclick="returnToPokedex()" style="background: #f39c12; color: white;">🔙 Volver a la Pokédex</button>
+    </div>
+
+    </div>
+  </div>
+
+  <script src="batalla.js"></script>
+</body>
+</html>

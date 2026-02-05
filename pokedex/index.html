@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pokédex JS - Rojo Fuego</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="pokedex-container">
+    <div class="panel left-panel">
+      <div class="top-lights">
+        <div class="big-light"></div>
+        <div class="small-light red"></div>
+        <div class="small-light yellow"></div>
+        <div class="small-light green"></div>
+      </div>
+
+      <div class="screen-container">
+        <div class="main-screen">
+          <div class="screen-header">
+            <span id="pokemon-numero">---</span>
+            <span id="pokemon-title">ESPERANDO...</span>
+          </div>
+          
+          <div class="sprite-area">
+            <img id="screen-left-image" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/0.png" alt="Pokemon">
+          </div>
+
+          <div class="types-container">
+            <div id="pokemon-type-1" class="type-box"></div>
+            <div id="pokemon-type-2" class="type-box"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="controls-left">
+        <div class="d-pad">
+          <button class="arrow arrow-top">▲</button>
+          <button class="arrow arrow-left">◀</button>
+          <div class="arrow-center"></div>
+          <button class="arrow arrow-right">▶</button>
+          <button class="arrow arrow-bottom">▼</button>
+        </div>
+        <button class="btn-random" onclick="pokemonAleatorio()">Random 🎲</button>
+      </div>
+    </div>
+
+    <div class="panel right-panel">
+      <div class="info-screen">
+        <h3>Estadísticas Base</h3>
+        <div class="stat-row"><strong>HP:</strong> <span id="pokemon-hp">0</span></div>
+        <div class="stat-row"><strong>ATK:</strong> <span id="pokemon-attack">0</span></div>
+        <div class="stat-row"><strong>DEF:</strong> <span id="pokemon-defense">0</span></div>
+        <div class="stat-row"><strong>SPD:</strong> <span id="pokemon-speed">0</span></div>
+      </div>
+
+      <div class="keypad-grid">
+        <button onclick="asignarNumero(this)">1</button>
+        <button onclick="asignarNumero(this)">2</button>
+        <button onclick="asignarNumero(this)">3</button>
+        <button onclick="asignarNumero(this)">4</button>
+        <button onclick="asignarNumero(this)">5</button>
+        <button onclick="asignarNumero(this)">6</button>
+        <button onclick="asignarNumero(this)">7</button>
+        <button onclick="asignarNumero(this)">8</button>
+        <button onclick="asignarNumero(this)">9</button>
+        <button onclick="asignarNumero(this)">0</button>
+      </div>
+
+      <div class="action-buttons">
+        <button class="btn-search" onclick="buscarPokemon()">BUSCAR 🔍</button>
+        <button class="btn-add" onclick="agregarPokemon()">AGREGAR AL EQUIPO ⊕</button>
+      </div>
+
+      <div id="battle-container" style="display: none; margin-top: 10px;">
+        <button class="btn-battle" onclick="iniciarBatalla()">⚔️ INICIAR BATALLA ⚔️</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="team-section">
+    <h2>TU EQUIPO POKÉMON (Máx 6)</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>HP</th>
+          <th>DEF</th>
+          <th>SPD</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody id="contenido-tabla">
+        </tbody>
+    </table>
+  </div>
+
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <h3>Editar Mote</h3>
+      <input type="hidden" id="index">
+      <input type="text" id="nombre_editar" placeholder="Nuevo nombre...">
+      <div class="modal-actions">
+        <button onclick="editarPokemon()">Guardar</button>
+        <button onclick="cerrarModal()" class="cancel">Cancelar</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
